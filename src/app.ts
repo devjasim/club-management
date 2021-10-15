@@ -1,4 +1,4 @@
-import express from "express";
+import express, {Response, Request} from "express";
 import mongoose, { ConnectOptions } from "mongoose";
 import cors from "cors";
 import dotenv from 'dotenv';
@@ -17,6 +17,10 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 app.use(cors());
 
 app.use("/posts", postRoutes);
+
+app.get("/", (req: Request, res: Response) => {
+	res.send("Hello to Club Management App")
+});
 
 const URL = process.env.CONNECTION_URL || "";
 
